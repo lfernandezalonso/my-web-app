@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="onMenuToggleDispatch()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Total Look - Fashion clothes</span>&nbsp;&nbsp;
+  <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+    <ul fxLayout="row" fxLayoutGap="10px" class="navigation-menu">
+      <li *ngIf="userLogged"><a mat-list-item routerLink="/">Home</a></li>
+      <li *ngIf="!userLogged"><a mat-list-item routerLink="/register">Register</a></li>
+      <li *ngIf="!userLogged"><a mat-list-item routerLink="/login">Login</a></li>
+      <li *ngIf="userLogged"><a mat-list-item routerLink="/products">Products</a></li>
+      <li *ngIf="userLogged"><a mat-list-item routerLink="/colors">Colors</a></li>
+      <li (click)="logoutUser()" *ngIf="userLogged"><a mat-list-item routerLink="/login">Logout</a></li>
+    </ul>
+  </div>
+</mat-toolbar>

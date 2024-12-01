@@ -1,0 +1,64 @@
+<mat-card>
+  <h2>Products</h2>
+
+  <div fxLayoutAlign="left center">
+    <mat-form-field fxFlex="40%">
+      <mat-label>Filter:</mat-label>
+      <input matInput type="text" (keyup)="applyFilter($event)" placeholder="Enter text..." value="">
+    </mat-form-field>
+  </div>
+
+  <div>
+    <button mat-mini-fab aria-label="New" (click)="openDialog()"><mat-icon>add</mat-icon></button>&nbsp;&nbsp;
+    <button mat-mini-fab aria-label="Delete"><mat-icon>delete</mat-icon></button>&nbsp;&nbsp;
+    <button mat-mini-fab aria-label="Import"><mat-icon>file_upload</mat-icon></button>&nbsp;&nbsp;
+    <button mat-mini-fab aria-label="Export" (click)="exportList()"><mat-icon>file_download</mat-icon></button>
+  </div>
+  <br>
+
+  <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" (matSortChange)="SortRowsByColum($event)">
+    <ng-container matColumnDef="imageSrc">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Image</th>
+      <td mat-cell *matCellDef="let element"><img src="{{'assets/prod-images/' + element.imageSrc}}" class="product-image"></td>
+    </ng-container>
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>Id</th>
+      <td mat-cell *matCellDef="let element">{{element.id}}&nbsp;&nbsp;</td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+      <td mat-cell *matCellDef="let element">{{element.description}}&nbsp;&nbsp;</td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
+      <td mat-cell *matCellDef="let element">{{element.price | currency: 'EUR'}}&nbsp;&nbsp;</td>
+    </ng-container>
+
+    <ng-container matColumnDef="color">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Color</th>
+      <td mat-cell *matCellDef="let element">{{element.color.name}}&nbsp;&nbsp;</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element">
+        &nbsp;&nbsp;
+        <button mat-mini-fab aria-label="Edit" (click)="editProduct(element.id)">
+          <mat-icon>edit</mat-icon>
+        </button>&nbsp;&nbsp;
+        <button mat-mini-fab aria-label="Delete" (click)="deleteProduct(element.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="desplegarColumnas"></tr>
+    <tr mat-row *matRowDef="let row; columns: desplegarColumnas;"></tr>
+  </mat-table>
+  <br>
+  <mat-paginator (page)="eventPaginator($event)" #paginator class="demo-paginator" [pageSize]="productsPag.pageSize" [showFirstLastButtons]="true" [pageSizeOptions]="pageCombo" aria-label="Select page" [length]="productsPag.totalRows">
+  </mat-paginator>
+</mat-card>

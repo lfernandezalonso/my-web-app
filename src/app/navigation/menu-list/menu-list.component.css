@@ -1,0 +1,12 @@
+.navigation-list-label {
+  padding: 6px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover, a:active {
+  color: #DCD0FF;
+}

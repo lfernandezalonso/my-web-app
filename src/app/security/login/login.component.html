@@ -1,0 +1,28 @@
+<section fxLayoutAlign="center">
+  <mat-card>
+    <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px"  #f="ngForm" (ngSubmit)="loginUser(f)">
+      <br><br>
+      <h2>Log in to "Total Look"</h2>
+      <br><br>
+      <mat-form-field>
+        <mat-label>Username:</mat-label>
+        <input type="text" matInput placeholder="User login..." value="" ngModel name="user_uname" required minlength="4" #usernameInput="ngModel">
+        <mat-error *ngIf="usernameInput.hasError('required')">The 'User name' must be entered</mat-error>
+        <mat-error *ngIf="!usernameInput.hasError('required')">The entered 'User name' is not valid</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Password:</mat-label>
+        <input type="password" matInput placeholder="Password..." value="" ngModel name="user_password" required minlength="8" #passwordInput="ngModel">
+        <mat-error *ngIf="passwordInput.hasError('required')">The 'Password' must be entered</mat-error>
+        <mat-error *ngIf="!passwordInput.hasError('required')">The 'Password' must be at least 8 chars long.</mat-error>
+      </mat-form-field><br>
+
+      <div>
+      <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid"><span class="material-icons">login</span>&nbsp;Login</button>&nbsp;&nbsp;
+      <button type="submit" mat-raised-button color="primary"><span class="material-icons">lock_reset</span>&nbsp;Forgot password</button>
+      </div>
+      <br><br>
+    </form>
+  </mat-card>
+</section>

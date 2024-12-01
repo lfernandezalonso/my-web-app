@@ -1,0 +1,14 @@
+.navigation-menu {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover, a:active {
+  color: #DCD0FF;
+}

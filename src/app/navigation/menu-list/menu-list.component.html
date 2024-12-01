@@ -1,0 +1,27 @@
+<mat-nav-list>
+  <a *ngIf="userLogged" mat-list-item routerLink="/" (click)="onMenuToggleDispatch()">
+    <span class="material-icons">home</span>
+    <span class="navigation-list-label">Home</span>
+  </a>
+  <a *ngIf="userLogged" mat-list-item routerLink="/products" (click)="onMenuToggleDispatch()">
+    <span class="material-icons">menu_book</span>
+    <!--span class="material-symbols-outlined">apparel</span-->
+    <span class="navigation-list-label">Products</span>
+  </a>
+  <a *ngIf="userLogged" mat-list-item routerLink="/colors" (click)="onMenuToggleDispatch()">
+    <span class="material-icons">color_lens</span>
+    <span class="navigation-list-label">Colors</span>
+  </a>
+  <a *ngIf="!userLogged" mat-list-item routerLink="/register" (click)="onMenuToggleDispatch()">
+    <span class="material-icons">app_registration</span>
+    <span class="navigation-list-label">Register</span>
+  </a>
+  <a *ngIf="!userLogged" mat-list-item routerLink="/login" (click)="onMenuToggleDispatch()">
+    <span class="material-icons">login</span>
+    <span class="navigation-list-label">Login</span>
+  </a>
+  <a *ngIf="userLogged" mat-list-item routerLink="/login" (click)="logoutUser()">
+    <span class="material-icons">logout</span>
+    <span class="navigation-list-label">Logout</span>
+  </a>
+</mat-nav-list>

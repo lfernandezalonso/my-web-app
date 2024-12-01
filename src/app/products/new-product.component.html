@@ -1,0 +1,39 @@
+<form #f="ngForm" (ngSubmit)="addNewProduct(f)">
+  <h2 mat-dialog-title>New product</h2>
+
+  <mat-dialog-content>
+    <section fxLayoutAlign="center" style="margin-top: 10px; margin-bottom: 10px;">
+      <mat-card fxFlex="100%">
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+
+          <mat-form-field>
+            <mat-label>Description:</mat-label>
+            <input type="text" matInput placeholder="Description..." value="" ngModel name="product_description" required minlength="2" #descriptionInput="ngModel">
+            <mat-error *ngIf="descriptionInput.hasError('required')">The 'description' must be entered</mat-error>
+            <mat-error *ngIf="!descriptionInput.hasError('required')">The 'description' must be at least 2 chars long</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Price:</mat-label>
+            <input type="text" matInput placeholder="Price..." value="" ngModel name="product_price" required pattern="^[1-9]+\.[0-9]{2}$" #priceInput="ngModel">
+            <mat-error *ngIf="priceInput.hasError('required')">The 'price' must be entered</mat-error>
+            <mat-error *ngIf="!priceInput.hasError('required')">The 'price' must have the format 9..99.99</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Color:</mat-label>
+            <mat-select aria-placeholder="Select a color" [(ngModel)]="selectedColorId" name="product_color" (selectionChange)="colorSelected($event)" required #colorInput="ngModel">
+              <mat-option *ngFor="let col of colorsList" [value]="col.id">{{col.name}}</mat-option>
+              <mat-error *ngIf="colorInput.hasError('required')">The 'color' must be entered</mat-error>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </mat-card>
+    </section>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+  <button mat-raised-button color="primary" type="submit"><span class="material-icons">save</span>&nbsp;Save</button>&nbsp;&nbsp;
+  <button mat-raised-button color="primary" [mat-dialog-close]="true"><span class="material-icons">cancel</span>&nbsp;Cancel</button>
+  </mat-dialog-actions>
+</form>

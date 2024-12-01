@@ -1,0 +1,31 @@
+<form #f="ngForm" (ngSubmit)="addNewColor(f)">
+  <h2 mat-dialog-title>New color</h2>
+
+  <mat-dialog-content>
+    <section fxLayoutAlign="center" style="margin-top: 10px; margin-bottom: 10px;">
+      <mat-card fxFlex="100%">
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+          <mat-form-field>
+            <mat-label>Name:</mat-label>
+            <input type="text" matInput placeholder="Name..." value="" ngModel name="color_name" required minlength="2" #colorNameInput="ngModel">
+            <mat-error *ngIf="colorNameInput.hasError('required')">The 'Name' must be entered</mat-error>
+            <mat-error *ngIf="!colorNameInput.hasError('required')">The entered 'Name' must be at least 13 chars long</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Hex Code:</mat-label>
+            <input type="text" matInput placeholder="Hex Code..." value="" ngModel name="color_hexCode" required minlength="2" #hexCodeInput="ngModel">
+            <mat-error *ngIf="hexCodeInput.hasError('required')">The 'Name' must be entered</mat-error>
+            <mat-error *ngIf="!hexCodeInput.hasError('required')">The entered 'Name' must be at least 13 chars long</mat-error>
+          </mat-form-field>
+
+        </div>
+      </mat-card>
+    </section>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+  <button mat-raised-button color="primary" type="submit"><span class="material-icons">save</span>&nbsp;Save</button>&nbsp;&nbsp;
+  <button mat-raised-button color="primary" [mat-dialog-close]="true"><span class="material-icons">cancel</span>&nbsp;Cancel</button>
+  </mat-dialog-actions>
+</form>

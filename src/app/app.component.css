@@ -1,0 +1,19 @@
+mat-drawer-container {
+  height: 100%;
+}
+
+.mat-drawer {
+  width: 250px;
+}
+
+/*
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover, a:active {
+  color: #DCD0FF;
+}*/
+

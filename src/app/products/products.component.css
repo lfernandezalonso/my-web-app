@@ -1,0 +1,45 @@
+table {
+  width: 100%;
+}
+
+td,th {
+  align-content: center;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.mat-flat-button.mat-accent, .mat-raised-button.mat-accent, .mat-fab.mat-accent, .mat-mini-fab.mat-accent {
+  background-color: #005CBB;
+}
+
+mat-card {
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+th.mat-header-cell:first-of-type {
+    padding-left: 10px !important;
+}
+
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+  padding-right: 10px !important;
+  padding-left: 10px !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+td.mat-cell {
+  padding-right: 10px !important;
+  padding-left: 10px !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+.product-image {
+  border: 1px solid #000000;
+  width: 90px;
+  height: 90px;
+  position: relative;
+  top: 3.25px;
+}

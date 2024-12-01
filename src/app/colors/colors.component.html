@@ -1,0 +1,55 @@
+<mat-card>
+  <h2>Colors</h2>
+
+  <div fxLayoutAlign="left center">
+    <mat-form-field fxFlex="40%">
+      <mat-label>Filter:</mat-label>
+      <input type="text" (keyup)="applyFilter($event)" matInput placeholder="Enter text..." value="">
+    </mat-form-field>
+  </div>
+
+  <div>
+    <button mat-mini-fab aria-label="New" (click)="openDialog()"><mat-icon>add</mat-icon></button>&nbsp;&nbsp;
+    <button mat-mini-fab aria-label="Delete"><mat-icon>delete</mat-icon></button>&nbsp;&nbsp;
+    <button mat-mini-fab aria-label="Import"><mat-icon>file_upload</mat-icon></button>&nbsp;&nbsp;
+    <button mat-mini-fab aria-label="Export" (click)="exportList()"><mat-icon>file_download</mat-icon></button>
+  </div>
+  <br>
+
+  <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" (matSortChange)="SortRowsByColum($event)">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>Id</th>
+      <td mat-cell *matCellDef="let element">{{element.id}}&nbsp;&nbsp;</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let element">{{element.name}}&nbsp;&nbsp;</td>
+    </ng-container>
+
+    <ng-container matColumnDef="hexCode">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Hex Code</th>
+      <td mat-cell *matCellDef="let element">{{element.hexCode}}&nbsp;&nbsp;</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element">
+        &nbsp;&nbsp;
+        <button mat-mini-fab aria-label="Edit" (click)="editColor(element.id)">
+          <mat-icon>edit</mat-icon>
+        </button>&nbsp;&nbsp;
+        <button mat-mini-fab aria-label="Delete" (click)="deleteColor(element.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="desplegarColumnas"></tr>
+    <tr mat-row *matRowDef="let row; columns: desplegarColumnas;"></tr>
+  </mat-table>
+  <br>
+  <mat-paginator (page)="eventPaginator($event)" #paginator class="demo-paginator" [pageSize]="colorsPag.pageSize" [showFirstLastButtons]="true" [pageSizeOptions]="pageCombo" aria-label="Select page" [length]="colorsPag.totalRows">
+  </mat-paginator>
+
+</mat-card>
